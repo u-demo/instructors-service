@@ -4,10 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/u-demo/students-also-bought-service
+  - https://github.com/u-demo/header-sidebar-service
+  - https://github.com/u-demo/Student-Feedback
 
 ## Table of Contents
 
