@@ -1,5 +1,3 @@
-const mysql = require('mysql');
-const connection = mysql.
 const courses = ['React & Redux for Beginners',
   'Advanced Guide to Bootstrap',
   'Trainwreck: An Introduction to Rails',
@@ -101,4 +99,4 @@ const courses = ['React & Redux for Beginners',
   'Telepathic Animal Healing 101',
   'Animal Communication For beginners'];
 
-courses.forEach((course, index) => )
+module.exports = courses;
