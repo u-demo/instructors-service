@@ -6,7 +6,9 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "seed": "node database/index.js"
+  },
   "dependencies": {
     "bluebird": "^3.5.2",
     "express": "^4.16.4",

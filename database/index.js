@@ -11,58 +11,60 @@ const connection = mysql.createConnection({
 const insertCourses = courses.map((courseName) => {
   return new Promise((resolve) => {
     const course = {
-      name: courseName,
+      id: null,
+      course_name: courseName,
       rating: Math.floor(Math.random() * 50) / 10,
       reviews: Math.floor(Math.random() * 1000),
       lectures: Math.floor(Math.random() * 100),
       num_hours: Math.floor(Math.random() * 100),
       full_price: Math.floor(Math.random() * 100000) / 100,
       disc_price: Math.floor(Math.random() * 10000) / 100,
-      photo_url: 'https://picsum.photos/200/300/?random',
     };
+    course.photo_url = `https://picsum.photos/200/300?image=${Math.floor(Math.random() * 1000)}`;
 
-    connection.query('INSERT INTO courses (course_name, rating, reviews, lectures, num_hours, full_price, disc_price, photo_url) VALUES (?,?,?,?,?,?,?,?);',
-      [course.name, course.rating, course.reviews, course.lectures, course.num_hours,
-        course.full_price, course.disc_price, course.photo_url], () => {
-        resolve();
-      });
+    connection.query('INSERT INTO courses SET ?', course, () => {
+      resolve();
+    });
   });
 });
 
 const insertInstructors = [...Array(30).keys()].map(() => {
   return new Promise((resolve) => {
     const inst = {
-      name: faker.name.findName(),
+      inst_name: faker.name.findName(),
       students: Math.floor(Math.random() * 100000),
-      photo_url: 'https://picsum.photos/200/300/?random',
     };
+    inst.photo_url = Math.random() > 0.5
+      ? `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 90)}.jpg`
+      : `https://randomuser.me/api/portraits/men/${Math.floor(Math.random() * 90)}.jpg`;
 
-    connection.query('INSERT INTO instructors (inst_name, students, photo_url) VALUES (?,?,?);',
-      [inst.name, inst.students, inst.photo_url], () => {
-        resolve();
-      });
+
+    connection.query('INSERT INTO instructors SET ?', inst, () => {
+      resolve();
+    });
   });
 });
 
 const insertJoin = [...Array(100).keys()].map((num) => {
   return new Promise((resolve) => {
-    const c_i = {
+    const join = {
       inst_id: Math.ceil(Math.random() * 30),
       course_id: num + 1,
     };
 
-    connection.query('INSERT INTO courses_inst (inst_id, course_id) VALUES (?,?);', [c_i.inst_id, c_i.course_id]);
-    const ids = [c_i.inst_id];
+    connection.query('INSERT INTO courses_inst SET ?', join);
+    const ids = [join.inst_id];
     for (let i = 0.6; i < 1; i += 0.1) {
       if (Math.random() > i) {
-        let new_Id = Math.ceil(Math.random() * 30);
-        while (ids.includes(new_Id)) {
-          new_Id = Math.ceil(Math.random() * 30);
+        let newId = Math.ceil(Math.random() * 30);
+        while (ids.includes(newId)) {
+          newId = Math.ceil(Math.random() * 30);
         }
-        ids.push(new_Id);
-        connection.query('INSERT INTO courses_inst (inst_id, course_id) VALUES (?,?);', [new_Id, c_i.course_id], () => {
-          resolve();
-        });
+        ids.push(newId);
+        connection.query('INSERT INTO courses_inst (inst_id, course_id) VALUES (?,?);',
+          [newId, join.course_id], () => {
+            resolve();
+          });
       }
     }
   });
@@ -80,9 +82,8 @@ const updateInstructors = [...Array(30).keys()].map((num) => {
             });
         });
       });
-      const getCourses = Promise.all(getReviewInfo);
       
-      getCourses.then((data) => {
+      Promise.all(getReviewInfo).then((data) => {
         return new Promise((resolve) => {
           let totScore = 0;
           let totReviews = 0;
@@ -116,4 +117,3 @@ const tables = Promise.all(insertCourses)
 tables.then(() => {
   connection.end();
 });
-
