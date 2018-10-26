@@ -11,7 +11,6 @@ const connection = mysql.createConnection({
 const insertCourses = courses.map((courseName) => {
   return new Promise((resolve) => {
     const course = {
-      id: null,
       name: courseName,
       rating: Math.floor(Math.random() * 50) / 10,
       reviews: Math.floor(Math.random() * 1000),
@@ -22,27 +21,26 @@ const insertCourses = courses.map((courseName) => {
       photo_url: 'https://picsum.photos/200/300/?random',
     };
 
-    connection.query('INSERT INTO courses (id, course_name, rating, reviews, lectures, num_hours, full_price, disc_price, photo_url) VALUES (?,?,?,?,?,?,?,?,?);', [course.id, course.name, course.rating, course.reviews, course.lectures, course.num_hours, course.full_price, course.disc_price, course.photo_url], () => {
-      resolve();
-    });
+    connection.query('INSERT INTO courses (course_name, rating, reviews, lectures, num_hours, full_price, disc_price, photo_url) VALUES (?,?,?,?,?,?,?,?);',
+      [course.name, course.rating, course.reviews, course.lectures, course.num_hours,
+        course.full_price, course.disc_price, course.photo_url], () => {
+        resolve();
+      });
   });
 });
 
 const insertInstructors = [...Array(30).keys()].map(() => {
   return new Promise((resolve) => {
     const inst = {
-      id: null,
       name: faker.name.findName(),
-      rating: null,
-      reviews: null,
       students: Math.floor(Math.random() * 100000),
-      courses: null,
       photo_url: 'https://picsum.photos/200/300/?random',
     };
 
-    connection.query('INSERT INTO instructors (id, inst_name, rating, reviews, students, courses, photo_url) VALUES (?,?,?,?,?,?,?);', [inst.id, inst.name, inst.rating, inst.reviews, inst.students, inst.courses, inst.photo_url], () => {
-      resolve();
-    });
+    connection.query('INSERT INTO instructors (inst_name, students, photo_url) VALUES (?,?,?);',
+      [inst.name, inst.students, inst.photo_url], () => {
+        resolve();
+      });
   });
 });
 
@@ -94,8 +92,7 @@ const updateInstructors = [...Array(30).keys()].map((num) => {
           }
           const rating = Math.round(totScore / totReviews * 10) / 10;
           connection.query('UPDATE instructors SET rating = ?, reviews = ?, courses = ? WHERE id = ?;',
-            [rating, totReviews, data.length, num + 1], (error) => {
-              if (error) console.log(error);
+            [rating, totReviews, data.length, num + 1], () => {
               resolve();
               re();
             });
@@ -107,19 +104,16 @@ const updateInstructors = [...Array(30).keys()].map((num) => {
 
 const tables = Promise.all(insertCourses)
   .then(() => {
-    // console.log('one');
     return Promise.all(insertInstructors);
   })
   .then(() => {
-    // console.log('two');
     return Promise.all(insertJoin);
   })
   .then(() => {
-    // console.log('three');
     return Promise.all(updateInstructors);
   });
 
 tables.then(() => {
-  console.log('hi');
+  connection.end();
 });
 
