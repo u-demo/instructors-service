@@ -82,17 +82,33 @@ tables.then(() => {
   console.log('hi');
 });
 
-// [...Array(30).keys()].forEach((num) => {
-//   connection.query('SELECT course_id FROM courses_inst WHERE inst_id=?;', [num + 1], (err, results) => {
-//     const reviewInfo = results.map((result) => {
-//       return new Promise((resolve) => {
-//         connection.query('SELECT rating, reviews FROM courses WHERE id=?;',
-//           [result.course_id], (error, res) => {
-//             resolve(res);
-//           });
-//       });
-//     });
-//     const outcome = Promise.all(reviewInfo);
-//     outcome.then(data => console.log(data));
-//   });
-// });
+const updateInstructors = [...Array(1).keys()].map((num) => {
+  return new Promise((resolve) => {
+    connection.query('SELECT course_id FROM courses_inst WHERE inst_id=?;', [num + 1], (err, results) => {
+      const reviewInfo = results.map((result) => {
+        return new Promise((resolv) => {
+          connection.query('SELECT rating, reviews FROM courses WHERE id=?;',
+            [result.course_id], (error, res) => {
+              resolve(res);
+            });
+        });
+      });
+      const getCourses = Promise.all(reviewInfo);
+      getCourses.then((data) => {
+        return new Promise((resol) => {
+          let totScore = 0;
+          let totReviews = 0;
+          data.forEach((datum) => {
+            totScore += datum.rating * datum.reviews;
+            totReviews += datum.reviews;
+          });
+          const rating = Math.round(totScore / totReviews * 10) / 10;
+          connection.query('UPDATE instructors SET rating = ?, reviews = ? WHERE id = ?;',
+            [rating, totReviews, num + 1], () => {
+              resolve();
+            });
+        });
+      });
+    });
+  });
+});
