@@ -8,8 +8,6 @@ const connection = mysql.createConnection({
   database: 'inst',
 });
 
-connection.connect();
-
 const insertCourses = courses.map((courseName) => {
   return new Promise((resolve) => {
     const course = {
@@ -48,7 +46,7 @@ const insertInstructors = [...Array(30).keys()].map(() => {
   });
 });
 
-const insertJoin = [...Array(25).keys()].map((num) => {
+const insertJoin = [...Array(100).keys()].map((num) => {
   return new Promise((resolve) => {
     const c_i = {
       inst_id: Math.ceil(Math.random() * 30),
@@ -72,43 +70,56 @@ const insertJoin = [...Array(25).keys()].map((num) => {
   });
 });
 
-const tables = Promise.all(insertCourses).then(() => {
-  return Promise.all(insertInstructors);
-}).then(() => {
-  return Promise.all(insertJoin);
-});
-
-tables.then(() => {
-  console.log('hi');
-});
-
-const updateInstructors = [...Array(1).keys()].map((num) => {
-  return new Promise((resolve) => {
+const updateInstructors = [...Array(30).keys()].map((num) => {
+  return new Promise((re) => {
     connection.query('SELECT course_id FROM courses_inst WHERE inst_id=?;', [num + 1], (err, results) => {
-      const reviewInfo = results.map((result) => {
-        return new Promise((resolv) => {
+      
+      const getReviewInfo = results.map((result) => {
+        return new Promise((resolve) => {
           connection.query('SELECT rating, reviews FROM courses WHERE id=?;',
             [result.course_id], (error, res) => {
               resolve(res);
             });
         });
       });
-      const getCourses = Promise.all(reviewInfo);
+      const getCourses = Promise.all(getReviewInfo);
+      
       getCourses.then((data) => {
-        return new Promise((resol) => {
+        return new Promise((resolve) => {
           let totScore = 0;
           let totReviews = 0;
-          data.forEach((datum) => {
-            totScore += datum.rating * datum.reviews;
-            totReviews += datum.reviews;
-          });
+          for (let i = 0; i < data.length; i += 1) {
+            totScore += data[i][0].rating * data[i][0].reviews;
+            totReviews += data[i][0].reviews;
+          }
           const rating = Math.round(totScore / totReviews * 10) / 10;
-          connection.query('UPDATE instructors SET rating = ?, reviews = ? WHERE id = ?;',
-            [rating, totReviews, num + 1], () => {
+          connection.query('UPDATE instructors SET rating = ?, reviews = ?, courses = ? WHERE id = ?;',
+            [rating, totReviews, data.length, num + 1], (error) => {
+              if (error) console.log(error);
               resolve();
+              re();
             });
         });
       });
     });
   });
 });
+
+const tables = Promise.all(insertCourses)
+  .then(() => {
+    // console.log('one');
+    return Promise.all(insertInstructors);
+  })
+  .then(() => {
+    // console.log('two');
+    return Promise.all(insertJoin);
+  })
+  .then(() => {
+    // console.log('three');
+    return Promise.all(updateInstructors);
+  });
+
+tables.then(() => {
+  console.log('hi');
+});
+
