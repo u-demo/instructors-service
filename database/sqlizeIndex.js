@@ -47,7 +47,7 @@ const Courses = sequelize.define('courses', {
   underscored: true,
 });
 
-const Join = sequelize.define('join', {
+const Join = sequelize.define('joins', {
   course_id: Sequelize.INTEGER(6),
   inst_id: Sequelize.INTEGER(6),
 }, {
@@ -58,5 +58,6 @@ const Join = sequelize.define('join', {
 Join.belongsTo(Instructors, { foreignKey: 'inst_id' });
 Join.belongsTo(Courses, { foreignKey: 'course_id' });
 
-sequelize.sync();
-
+module.exports = {
+  Instructors, Courses, Join, sequelize,
+};
