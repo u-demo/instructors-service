@@ -15,11 +15,12 @@ class App extends React.Component {
   }
 
   update() {
-    fetch('/instructors')
+    fetch('/instructors/54')
     .then((response) => {
       return response.json();
     })
     .then((data) => {
+      console.log(data);
       this.setState({
         instructors: data
       });
@@ -29,7 +30,7 @@ class App extends React.Component {
   render() {
     return (
       <div>     
-        {this.state.instructors ? this.state.instructors.map((i) => <div>{i.inst_name}</div>) : null}
+        {this.state.instructors ? this.state.instructors.map((i) => <div>{i.id}</div>) : null}
       </div>
     );
   }
