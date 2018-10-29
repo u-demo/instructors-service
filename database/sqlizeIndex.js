@@ -21,6 +21,8 @@ const Instructors = sequelize.define('instructors', {
   rating: Sequelize.DECIMAL(2, 1),
   reviews: Sequelize.INTEGER(7),
   students: Sequelize.INTEGER(8),
+  title: Sequelize.STRING,
+  blurb: Sequelize.TEXT,
   courses: Sequelize.INTEGER(4),
   photo_url: Sequelize.STRING(255),
 }, {

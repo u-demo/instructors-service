@@ -6,6 +6,8 @@ const instructorGenerator = (num) => {
     const instructor = {
       inst_name: faker.name.findName(),
       students: Math.floor(Math.random() * 100000),
+      title: faker.lorem.words(),
+      blurb: faker.lorem.paragraphs(),
     };
     instructor.photo_url = Math.random() > 0.5
       ? `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 90)}.jpg`

@@ -33,4 +33,5 @@ mysql.sequelize.sync()
     }
     return Promise.all(promises);
   })
+  .catch((err) => { console.log(`Error seeding database: ${err}`); })
   .then(() => { process.exit(); });
