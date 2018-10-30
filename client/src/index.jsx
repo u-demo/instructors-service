@@ -23,6 +23,7 @@ class App extends React.Component {
       return response.json();
     })
     .then((data) => {
+      console.log(data);
       this.setState({
         instructors: data
       });
@@ -32,6 +33,7 @@ class App extends React.Component {
   render() {
     console.log(this.state.instructors);
     return (
+<<<<<<< HEAD
       <div>
         <div>     
           {this.state.instructors 
@@ -44,6 +46,10 @@ class App extends React.Component {
             <div>< More info={this.state.instructors[i]} id={this.state.courseId} /></div>)
             : null}
         </div>
+=======
+      <div>     
+        {this.state.instructors ? this.state.instructors.map((i) => <div>{i.id}</div>) : null}
+>>>>>>> f490f6b89ccee7c2f3d11a1e85168b7af8026552
       </div>
     );
   }
