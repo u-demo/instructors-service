@@ -1,4 +1,5 @@
 import React from 'react';
+import Stat from './stat.jsx';
 
 class About extends React.Component {
   constructor(props) {
@@ -35,42 +36,19 @@ class About extends React.Component {
           <img className="instructor_photo" src={this.props.info.instInfo.photo_url}></img>
           <table className="instructor_info">
             <tbody>
-              <tr>
-                <td>
-                  <img className="instructor_icon" src="https://s3-us-west-1.amazonaws.com/u-demo/blackstar.png"></img>
-                </td>
-                <td>
-                  <span className="instructor_stat">{this.addCommas(this.props.info.instInfo.rating)}</span>
-                  <span className="instructor_stat_text">Instructor Rating</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <img className="instructor_icon" src="https://s3-us-west-1.amazonaws.com/u-demo/chat.png"></img>
-                </td>
-                <td>
-                  <span className="instructor_stat">{this.addCommas(this.props.info.instInfo.reviews)}</span>
-                  <span className="instructor_stat_text">Reviews</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <img className="instructor_icon" src="https://s3-us-west-1.amazonaws.com/u-demo/user.png"></img>
-                </td>
-                <td>
-                  <span className="instructor_stat">{this.addCommas(this.props.info.instInfo.students)}</span>
-                  <span className="instructor_stat_text">Students</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                <img className="instructor_icon" src="https://s3-us-west-1.amazonaws.com/u-demo/play.png"></img>
-                </td>
-                <td>
-                  <span className="instructor_stat">{this.props.info.instInfo.courses}</span>
-                  <span className="instructor_stat_text">Courses</span>
-                </td>
-              </tr>
+              {["Instructor Rating", "Reviews", "Students", "Courses"].map((title, i) => {
+                const images = ["https://s3-us-west-1.amazonaws.com/u-demo/blackstar.png",
+                  "https://s3-us-west-1.amazonaws.com/u-demo/chat.png",
+                  "https://s3-us-west-1.amazonaws.com/u-demo/user.png",
+                  "https://s3-us-west-1.amazonaws.com/u-demo/play.png"];
+
+                const stats = [this.addCommas(this.props.info.instInfo.rating),
+                  this.addCommas(this.props.info.instInfo.reviews),
+                  this.addCommas(this.props.info.instInfo.students),
+                  this.props.info.instInfo.courses];
+
+                return < Stat stat={stats[i]} text={title} image={images[i]} />;
+              })}
             </tbody>
           </table>
         </div>
