@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       instructors: null,
-      courseId: 54
+      courseId: 7
     }
     this.update = this.update.bind(this);
   }
@@ -18,12 +18,11 @@ class App extends React.Component {
   }
 
   update() {
-    fetch('/instructors/54')
+    fetch('/instructors/7')
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       this.setState({
         instructors: data
       });
@@ -31,25 +30,25 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.instructors);
     return (
-<<<<<<< HEAD
-      <div>
-        <div>     
+      <div className="left_col">
+        <div className="about_instructors">     
           {this.state.instructors 
-            ? this.state.instructors.map((inst, i) => <div>< About info={this.state.instructors[i]} /></div>)
+            ? [
+              (this.state.instructors.length > 1
+                ? <div className="about_header">About the instructors</div>
+                : <div className="about_header">About the instructor</div>
+              ),
+              this.state.instructors.map((inst, i) => <div className="about_instructor">< About info={this.state.instructors[i]} /></div>)
+            ]
             : null}
         </div>
-        <div>
+        <div className="instructor_courses">
           {this.state.instructors
             ? this.state.instructors.map((inst, i) => 
-            <div>< More info={this.state.instructors[i]} id={this.state.courseId} /></div>)
+            <div className="instructor_course">< More info={this.state.instructors[i]} id={this.state.courseId} /></div>)
             : null}
         </div>
-=======
-      <div>     
-        {this.state.instructors ? this.state.instructors.map((i) => <div>{i.id}</div>) : null}
->>>>>>> f490f6b89ccee7c2f3d11a1e85168b7af8026552
       </div>
     );
   }
