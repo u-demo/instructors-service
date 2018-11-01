@@ -37,17 +37,14 @@ class About extends React.Component {
           <table className="instructor_info">
             <tbody>
               {["Instructor Rating", "Reviews", "Students", "Courses"].map((title, i) => {
-                const images = ["https://s3-us-west-1.amazonaws.com/u-demo/blackstar.png",
-                  "https://s3-us-west-1.amazonaws.com/u-demo/chat.png",
-                  "https://s3-us-west-1.amazonaws.com/u-demo/user.png",
-                  "https://s3-us-west-1.amazonaws.com/u-demo/play.png"];
-
+                const images = ["blackstar", "chat", "user", "play"];
                 const stats = [this.addCommas(this.props.info.instInfo.rating),
                   this.addCommas(this.props.info.instInfo.reviews),
                   this.addCommas(this.props.info.instInfo.students),
                   this.props.info.instInfo.courses];
 
-                return < Stat stat={stats[i]} text={title} image={images[i]} />;
+                return < Stat stat={stats[i]} text={title}
+                image={`https://s3-us-west-1.amazonaws.com/u-demo/${images[i]}.png`} />;
               })}
             </tbody>
           </table>
@@ -59,20 +56,20 @@ class About extends React.Component {
           <div className="instructor_title">{this.props.info.instInfo.title}</div>
           {this.state.expand 
           ?
-          <div className="instructor_blurb_long">
-          {this.props.info.instInfo.blurb.split('\n').map((p) => {
-            return <p>{p}</p>;
-          })}
-          </div>
+            <div className="instructor_blurb_long">
+            {this.props.info.instInfo.blurb.split('\n').map((p) => {
+              return <p>{p}</p>;
+            })}
+            </div>
           : 
-          <div>
-            <div className="instructor_blurb_short">
+            <div className="short_blurb_container">
+              <div className="instructor_blurb_short">
                 {this.props.info.instInfo.blurb.split('\n').map((p) => {
                   return <p>{p}</p>;
                 })}
+              </div>
+              <div className="more_blurb" onClick={this.handleClick}>+ See more</div>
             </div>
-            <div className="more_blurb" onClick={this.handleClick}>+ See more</div>
-          </div>
           }
         </div>
       </div>

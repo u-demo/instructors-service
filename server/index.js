@@ -23,7 +23,11 @@ app.get('/instructors/:id', (req, res) => {
             return mysql.Join.findAll({ where: { inst_id: inst.dataValues.inst_id } });
           })
           .then(courses => mysql.Courses.findAll({
-            where: { id: [courses.map(course => course.course_id)] },
+            where: {
+              id: [courses
+                .map(course => course.course_id)
+                .filter(c => c != req.params.id)],
+            },
           }))
           .then((courseData) => {
             instructor.courseInfo = courseData;

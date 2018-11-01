@@ -46,7 +46,7 @@ class App extends React.Component {
         <div className="instructor_courses">
           {this.state.instructors
             ? this.state.instructors.map((inst, i) => 
-            <div className="instructor_course">< More info={this.state.instructors[i]} id={this.state.courseId} /></div>)
+            < More info={this.state.instructors[i]} id={this.state.courseId} />)
             : null}
         </div>
       </div>

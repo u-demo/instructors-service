@@ -8,13 +8,13 @@ class More extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>More Courses by {this.props.info.instInfo.inst_name}</div>
-        {this.props.info.courseInfo.map((course, index) => {
-          if (course.id !== this.props.id) {
-            return <div>< Course cInfo={course} instInfo={this.props.info.instInfo} /></div>;
-          }
-        })}
+      <div className="instructor_courses_container">
+        {this.props.info.courseInfo.length 
+        ? <div className="instructor_courses_header">More Courses by {this.props.info.instInfo.inst_name}</div>
+        : null}
+        {this.props.info.courseInfo.slice(0,3).map(course => 
+          < Course cInfo={course} instInfo={this.props.info.instInfo} />)
+        }
       </div>
     );
   }
