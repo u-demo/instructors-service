@@ -23,16 +23,16 @@ class Course extends React.Component {
     return (
       <div className="instructor_course" onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
         <div className="course_photo_section">
+          <img className="course_photo" src={this.props.cInfo.photo_url}></img>
           {this.state.hover 
           ? 
             <div className="hover_layer">
               <img className="instructor_mini_photo" src={this.props.instInfo.photo_url}></img>
-              <div>{this.props.cInfo.lectures} lectures</div>
-              <div>{this.props.cInfo.num_hours} hours video</div>
+              <div className="course_lectures">{this.props.cInfo.lectures} lectures</div>
+              <div className="course_hours">{this.props.cInfo.num_hours} hours video</div>
             </div>
           : null
           }
-          <img className="course_photo" src={this.props.cInfo.photo_url}></img>
         </div>
         <div className="course_text_section">
           <span className="course_name">{this.props.cInfo.course_name}</span>
