@@ -5,16 +5,25 @@ class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expand: false,
+      expand: "short",
+      box: "visible"
     }
     this.handleClick = this.handleClick.bind(this);
     this.addCommas = this.addCommas.bind(this);
   }
 
   handleClick() {
-    this.setState({
-      expand: true,
-    });
+    if (this.state.expand === "short") {
+      this.setState({
+        expand: "long",
+        box: "invisible"
+      });
+    } else {
+      this.setState({
+        expand: "short",
+        box: "visible"
+      });
+    }
   }
 
   addCommas(stat){
@@ -54,23 +63,14 @@ class About extends React.Component {
             <div className="instructor_name">{this.props.info.instInfo.inst_name}</div>
           </div>
           <div className="instructor_title">{this.props.info.instInfo.title}</div>
-          {this.state.expand 
-          ?
-            <div className="instructor_blurb_long">
-            {this.props.info.instInfo.blurb.split('\n').map((p) => {
-              return <p>{p}</p>;
-            })}
-            </div>
-          : 
-            <div className="short_blurb_container">
-              <div className="instructor_blurb_short">
-                {this.props.info.instInfo.blurb.split('\n').map((p) => {
-                  return <p>{p}</p>;
-                })}
-              </div>
+          <div className={`instructor_blurb ${this.state.expand}`}>
+              {this.props.info.instInfo.blurb.split('\n').map((p) => {
+                return <p>{p}</p>;
+              })}
+            <div className={`more_container ${this.state.box}`}>
               <div className="more_blurb" onClick={this.handleClick}>+ See more</div>
             </div>
-          }
+          </div>
         </div>
       </div>
     );
