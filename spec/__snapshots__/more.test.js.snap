@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`More Component Snapshot renders More component 1`] = `
+<div
+  className="instructor_courses_container"
+/>
+`;

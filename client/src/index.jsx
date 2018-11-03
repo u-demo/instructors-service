@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       instructors: null,
-      courseId: 7
+      courseId: Math.random() * 100,
     }
     this.update = this.update.bind(this);
   }
@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   update() {
-    fetch('/instructors/7')
+    fetch(`/instructors/${this.state.courseId}`)
     .then((response) => {
       return response.json();
     })
@@ -45,7 +45,7 @@ class App extends React.Component {
         </div>
         <div className="instructor_courses">
           {this.state.instructors
-            ? this.state.instructors.map((inst, i) => 
+            ? this.state.instructors.slice(0,3).map((inst, i) => 
             < More info={this.state.instructors[i]} id={this.state.courseId} />)
             : null}
         </div>

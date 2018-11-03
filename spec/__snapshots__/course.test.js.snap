@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Course Component Snapshot renders Course component 1`] = `
+<div
+  className="instructor_course"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="course_photo_section"
+    style={
+      Object {
+        "backgroundImage": "url(google.com)",
+      }
+    }
+  >
+    <i
+      className="far fa-heart fa-lg big-heart unclicked"
+    />
+    <i
+      className="fas fa-heart small-heart unclicked"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="course_text_section"
+  >
+    <span
+      className="course_name"
+    >
+      Testing React
+    </span>
+    <div
+      className="course_instructor"
+    >
+      Charlie
+    </div>
+    <div
+      className="course_stats_bar"
+    >
+      <img
+        className="empty-stars"
+        src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png"
+      />
+      <div
+        className="stars-container"
+        style={
+          Object {
+            "width": "45px",
+          }
+        }
+      >
+        <img
+          className="full-stars"
+          src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png"
+        />
+      </div>
+      <span
+        className="course_rating"
+      >
+        3
+      </span>
+      <span
+        className="course_reviews"
+      >
+        (
+        100
+        )
+      </span>
+    </div>
+    <div
+      className="course_price_bar"
+    >
+      <span
+        className="course_disc_price"
+      >
+        $
+        50
+      </span>
+      <span
+        className="course_full_price"
+      >
+        $
+        500
+      </span>
+    </div>
+  </div>
+</div>
+`;

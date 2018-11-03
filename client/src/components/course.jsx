@@ -53,6 +53,7 @@ class Course extends React.Component {
             <div className="stars-container" style={ {width: `${this.props.cInfo.rating * 15}px`} }>
               <img className="full-stars" src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png"></img>
             </div>
+
             <span className="course_rating">{this.props.cInfo.rating}</span>
             <span className="course_reviews">({this.props.cInfo.reviews})</span>
           </div>
