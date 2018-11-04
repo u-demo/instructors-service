@@ -29,8 +29,8 @@ describe('stat Component Snapshot', () => {
     expect(wrapper.find('div')).toBeDefined();     
   });
   
-  it('should render an instructor_icon class', () => {
-    expect(wrapper.exists('.instructor_icon')).toEqual(true);
+  it('should render an instructorIcon class', () => {
+    expect(wrapper.exists('.instructorIcon')).toEqual(true);
   });
 
   it('should render two cells', () => {

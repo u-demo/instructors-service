@@ -1,0 +1,11 @@
+.instructorIcon {
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+  float: left;
+}
+
+.instructorStat {
+  font-weight: 600;
+  margin-right: 5px;
+}

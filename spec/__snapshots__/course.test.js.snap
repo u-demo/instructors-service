@@ -2,12 +2,12 @@
 
 exports[`Course Component Snapshot renders Course component 1`] = `
 <div
-  className="instructor_course"
+  className="instructorCourse"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
   <div
-    className="course_photo_section"
+    className="coursePhotoSection"
     style={
       Object {
         "backgroundImage": "url(google.com)",
@@ -15,35 +15,35 @@ exports[`Course Component Snapshot renders Course component 1`] = `
     }
   >
     <i
-      className="far fa-heart fa-lg big-heart unclicked"
+      className="far fa-heart fa-lg bigHeart unclicked"
     />
     <i
-      className="fas fa-heart small-heart unclicked"
+      className="fas fa-heart smallHeart unclicked"
       onClick={[Function]}
     />
   </div>
   <div
-    className="course_text_section"
+    className="courseTextSection"
   >
     <span
-      className="course_name"
+      className="courseName"
     >
       Testing React
     </span>
     <div
-      className="course_instructor"
+      className="courseInstructor"
     >
       Charlie
     </div>
     <div
-      className="course_stats_bar"
+      className="courseStatsBar"
     >
       <img
-        className="empty-stars"
+        className="emptyStars"
         src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png"
       />
       <div
-        className="stars-container"
+        className="starsContainer"
         style={
           Object {
             "width": "45px",
@@ -51,17 +51,17 @@ exports[`Course Component Snapshot renders Course component 1`] = `
         }
       >
         <img
-          className="full-stars"
+          className="fullStars"
           src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png"
         />
       </div>
       <span
-        className="course_rating"
+        className="courseRating"
       >
         3
       </span>
       <span
-        className="course_reviews"
+        className="courseReviews"
       >
         (
         100
@@ -69,16 +69,16 @@ exports[`Course Component Snapshot renders Course component 1`] = `
       </span>
     </div>
     <div
-      className="course_price_bar"
+      className="coursePriceBar"
     >
       <span
-        className="course_disc_price"
+        className="courseDiscPrice"
       >
         $
         50
       </span>
       <span
-        className="course_full_price"
+        className="courseFullPrice"
       >
         $
         500

@@ -2,13 +2,13 @@
 
 exports[`More Component Snapshot renders App component 1`] = `
 <div
-  className="left_col"
+  className="leftCol"
 >
   <div
-    className="about_instructors"
+    className="aboutInstructors"
   />
   <div
-    className="instructor_courses"
+    className="instructorCourses"
   />
 </div>
 `;

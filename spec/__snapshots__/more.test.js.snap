@@ -2,6 +2,6 @@
 
 exports[`More Component Snapshot renders More component 1`] = `
 <div
-  className="instructor_courses_container"
+  className="instructorCoursesContainer"
 />
 `;

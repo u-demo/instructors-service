@@ -5,31 +5,31 @@ exports[`About Component Snapshot renders About component 1`] = `
   className="instructor"
 >
   <div
-    className="info_photo"
+    className="infoPhoto"
   >
     <img
-      className="instructor_photo"
+      className="instructorPhoto"
       src="google.com"
     />
     <table
-      className="instructor_info"
+      className="instructorInfo"
     >
       <tbody>
         <tr>
           <td>
             <img
-              className="instructor_icon"
+              className="instructorIcon"
               src="https://s3-us-west-1.amazonaws.com/u-demo/blackstar.png"
             />
           </td>
           <td>
             <span
-              className="instructor_stat"
+              className="instructorStat"
             >
               5
             </span>
             <span
-              className="instructor_stat_text"
+              className="instructorStatText"
             >
               Instructor Rating
             </span>
@@ -38,18 +38,18 @@ exports[`About Component Snapshot renders About component 1`] = `
         <tr>
           <td>
             <img
-              className="instructor_icon"
+              className="instructorIcon"
               src="https://s3-us-west-1.amazonaws.com/u-demo/chat.png"
             />
           </td>
           <td>
             <span
-              className="instructor_stat"
+              className="instructorStat"
             >
               10
             </span>
             <span
-              className="instructor_stat_text"
+              className="instructorStatText"
             >
               Reviews
             </span>
@@ -58,18 +58,18 @@ exports[`About Component Snapshot renders About component 1`] = `
         <tr>
           <td>
             <img
-              className="instructor_icon"
+              className="instructorIcon"
               src="https://s3-us-west-1.amazonaws.com/u-demo/user.png"
             />
           </td>
           <td>
             <span
-              className="instructor_stat"
+              className="instructorStat"
             >
               100
             </span>
             <span
-              className="instructor_stat_text"
+              className="instructorStatText"
             >
               Students
             </span>
@@ -78,18 +78,18 @@ exports[`About Component Snapshot renders About component 1`] = `
         <tr>
           <td>
             <img
-              className="instructor_icon"
+              className="instructorIcon"
               src="https://s3-us-west-1.amazonaws.com/u-demo/play.png"
             />
           </td>
           <td>
             <span
-              className="instructor_stat"
+              className="instructorStat"
             >
               10
             </span>
             <span
-              className="instructor_stat_text"
+              className="instructorStatText"
             >
               Courses
             </span>
@@ -99,31 +99,31 @@ exports[`About Component Snapshot renders About component 1`] = `
     </table>
   </div>
   <div
-    className="title_blurb"
+    className="titleBlurb"
   >
     <div>
       <div
-        className="instructor_name"
+        className="instructorName"
       >
         Charlie
       </div>
     </div>
     <div
-      className="instructor_title"
+      className="instructorTitle"
     >
       Teacher
     </div>
     <div
-      className="instructor_blurb short"
+      className="instructorBlurb short"
     >
       <p>
         this is my blurb
       </p>
       <div
-        className="more_container visible"
+        className="moreContainer visible"
       >
         <div
-          className="more_blurb"
+          className="moreBlurb"
           onClick={[Function]}
         >
           + See more

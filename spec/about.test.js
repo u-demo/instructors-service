@@ -44,7 +44,7 @@ describe('About Component Snapshot', () => {
   });
 
   it('should render one instructor photo', () => {
-    expect(wrapper.find('.instructor_photo').length).toEqual(1);
+    expect(wrapper.find('.instructorPhoto').length).toEqual(1);
   });
 
   // it('should render more than one blurb paragraph', () => {

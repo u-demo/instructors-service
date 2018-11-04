@@ -1,22 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import styles from '../../dist/styles/stat.css';
 
-class Stat extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Stat = props => (
+  <tr>
+    <td>
+      <img className={styles.instructorIcon} src={props.image}></img>
+    </td>
+    <td>
+      <span className={styles.instructorStat}>{props.stat}</span>
+      <span className={styles.instructorStatText}>{props.text}</span>
+    </td>
+  </tr>
+);
 
-  render() {
-    return (
-      <tr>
-        <td>
-          <img className="instructor_icon" src={this.props.image}></img>
-        </td>
-        <td>
-          <span className="instructor_stat">{this.props.stat}</span>
-          <span className="instructor_stat_text">{this.props.text}</span>
-        </td>
-      </tr>
-    );
-  }
-}
 export default Stat;
+
+Stat.propTypes = {
+  image: PropTypes.string,
+  stat: PropTypes.string,
+  text: PropTypes.string,
+};

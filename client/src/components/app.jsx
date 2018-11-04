@@ -1,6 +1,7 @@
 import React from 'react';
 import About from './about.jsx';
 import More from './more.jsx';
+import styles from '../../dist/styles/app.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class App extends React.Component {
     this.state = {
       instructors: null,
       courseId: Math.random() * 100,
-    }
+    };
     this.update = this.update.bind(this);
   }
 
@@ -18,34 +19,35 @@ class App extends React.Component {
 
   update() {
     fetch(`/instructors/${this.state.courseId}`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      this.setState({
-        instructors: data
+      .then(response => response.json())
+      .then((data) => {
+        this.setState({
+          instructors: data,
+        });
       });
-    });
   }
 
   render() {
     return (
-      <div className="left_col">
-        <div className="about_instructors">     
-          {this.state.instructors 
+      <div className={styles.leftCol}>
+        <div className={styles.aboutInstructors}>
+          {this.state.instructors
             ? [
               (this.state.instructors.length > 1
-                ? <div className="about_header">About the instructors</div>
-                : <div className="about_header">About the instructor</div>
+                ? <div key={'header'} className={styles.aboutHeader}>About the instructors</div>
+                : <div key={'header'} className={styles.aboutHeader}>About the instructor</div>
               ),
-              this.state.instructors.map((inst, i) => <div className="about_instructor">< About info={this.state.instructors[i]} /></div>)
+              this.state.instructors
+                .map((inst, i) => <div key={i} className={styles.aboutInstructor}>
+                < About key={i} info={this.state.instructors[i].instInfo} /></div>),
             ]
             : null}
         </div>
-        <div className="instructor_courses">
+        <div className={styles.instructorCourses}>
           {this.state.instructors
-            ? this.state.instructors.slice(0,3).map((inst, i) => 
-            < More info={this.state.instructors[i]} id={this.state.courseId} />)
+            ? this.state.instructors.slice(0, 3)
+              .map((inst, i) => < More key={i} info={this.state.instructors[i]}
+              id={this.state.courseId} />)
             : null}
         </div>
       </div>

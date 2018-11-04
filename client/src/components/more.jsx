@@ -1,22 +1,44 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Course from './course.jsx';
+import styles from '../../dist/styles/more.css';
 
-class More extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const More = props => (
+  <div className={styles.instructorCoursesContainer}>
+    {props.info.courseInfo.length
+      ? <div className={styles.instructorCoursesHeader}>
+        More Courses by {props.info.instInfo.inst_name}</div>
+      : null}
+    {props.info.courseInfo
+      .slice(0, 3)
+      .map((course, i) => < Course key={i} cInfo={course} instInfo={props.info.instInfo} />)
+    }
+  </div>
+);
 
-  render() {
-    return (
-      <div className="instructor_courses_container">
-        {this.props.info.courseInfo.length 
-        ? <div className="instructor_courses_header">More Courses by {this.props.info.instInfo.inst_name}</div>
-        : null}
-        {this.props.info.courseInfo.slice(0,3).map(course => 
-          < Course cInfo={course} instInfo={this.props.info.instInfo} />)
-        }
-      </div>
-    );
-  }
-}
 export default More;
+
+More.propTypes = {
+  info: PropTypes.shape({
+    instInfo: PropTypes.shape({
+      photo_url: PropTypes.string,
+      rating: PropTypes.string,
+      reviews: PropTypes.number,
+      students: PropTypes.number,
+      courses: PropTypes.number,
+      inst_name: PropTypes.string,
+      title: PropTypes.string,
+      blurb: PropTypes.string,
+    }),
+    courseInfo: PropTypes.arrayOf(PropTypes.shape({
+      photo_url: PropTypes.string,
+      lectures: PropTypes.number,
+      num_hours: PropTypes.number,
+      course_name: PropTypes.string,
+      rating: PropTypes.string,
+      reviews: PropTypes.number,
+      disc_price: PropTypes.string,
+      full_price: PropTypes.string,
+    })),
+  }),
+};

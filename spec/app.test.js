@@ -25,11 +25,11 @@ describe('More Component Snapshot', () => {
   });
   
   it('should render a left-col class', () => {
-    expect(wrapper.exists('.left_col')).toEqual(true);
+    expect(wrapper.exists('.leftCol')).toEqual(true);
   });
 
   it('should not initially render an about_header div', () => {
-    expect(wrapper.exists('.about_header')).toEqual(false);
+    expect(wrapper.exists('.aboutHeader')).toEqual(false);
   });
 
   // it('should render an instructor_courses_header div if there are courses', () => {

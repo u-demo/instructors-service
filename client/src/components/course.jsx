@@ -1,65 +1,68 @@
 import React from 'react';
-import { runInThisContext } from 'vm';
+import PropTypes from 'prop-types';
+import styles from '../../dist/styles/course.css';
 
 class Course extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       hover: false,
-      heart: "unclicked",
-    }
+      heart: 'unclicked',
+    };
     this.mouseEnter = this.mouseEnter.bind(this);
     this.mouseLeave = this.mouseLeave.bind(this);
     this.toggleClassName = this.toggleClassName.bind(this);
   }
 
   mouseEnter() {
-    this.setState({hover: !this.state.hover});
+    this.setState({ hover: !this.state.hover });
   }
 
   mouseLeave() {
-    this.setState({hover: !this.state.hover});
+    this.setState({ hover: !this.state.hover });
   }
 
   toggleClassName() {
-    if (this.state.heart === "unclicked") {
-      this.setState({ heart: "clicked" });
+    if (this.state.heart === 'unclicked') {
+      this.setState({ heart: 'clicked' });
     } else {
-      this.setState({ heart: "unclicked" });
+      this.setState({ heart: 'unclicked' });
     }
   }
 
   render() {
     return (
-      <div className="instructor_course" onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
-        <div className="course_photo_section" style={{backgroundImage: `url(${this.props.cInfo.photo_url})`}}>
-          <i className={`far fa-heart fa-lg big-heart ${this.state.heart}`}></i>
-          <i onClick={this.toggleClassName} className={`fas fa-heart small-heart ${this.state.heart}`}></i>
-          {this.state.hover 
-          ? 
-            <div className="hover_layer">
-              <img className="instructor_mini_photo" src={this.props.instInfo.photo_url}></img>
-              <div className="course_lectures">{this.props.cInfo.lectures} lectures</div>
-              <div className="course_hours">{this.props.cInfo.num_hours} hours video</div>
-            </div>
-          : null
+      <div className={styles.instructorCourse}
+        onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
+        <div className={styles.coursePhotoSection}
+          style={{ backgroundImage: `url(${this.props.cInfo.photo_url})` }}>
+          <i className={`far fa-heart fa-lg ${styles.bigHeart} ${styles[this.state.heart]}`}></i>
+          <i onClick={this.toggleClassName} className={`fas fa-heart ${styles.smallHeart} ${styles[this.state.heart]}`}></i>
+          {this.state.hover
+            ? <div className={styles.hoverLayer}>
+                <img className={styles.instructorMiniPhoto}
+                  src={this.props.instInfo.photo_url}></img>
+                <div className={styles.courseLectures}>{this.props.cInfo.lectures} lectures</div>
+                <div className={styles.courseHours}>{this.props.cInfo.num_hours} hours video</div>
+              </div>
+            : null
           }
         </div>
-        <div className="course_text_section">
-          <span className="course_name">{this.props.cInfo.course_name}</span>
-          <div className="course_instructor">{this.props.instInfo.inst_name}</div>
-          <div className="course_stats_bar">
-            <img className="empty-stars" src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png"></img>
-            <div className="stars-container" style={ {width: `${this.props.cInfo.rating * 15}px`} }>
-              <img className="full-stars" src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png"></img>
+        <div className={styles.courseTextSection}>
+          <span className={styles.courseName}>{this.props.cInfo.course_name}</span>
+          <div className={styles.courseInstructor}>{this.props.instInfo.inst_name}</div>
+          <div className={styles.courseStatsBar}>
+            <img className={styles.emptyStars} src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png"></img>
+            <div className={styles.starsContainer} style={ { width: `${this.props.cInfo.rating * 15}px` } }>
+              <img className={styles.fullStars} src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/filledStars.png"></img>
             </div>
 
-            <span className="course_rating">{this.props.cInfo.rating}</span>
-            <span className="course_reviews">({this.props.cInfo.reviews})</span>
+            <span className={styles.courseRating}>{this.props.cInfo.rating}</span>
+            <span className={styles.courseReviews}>({this.props.cInfo.reviews})</span>
           </div>
-          <div className="course_price_bar">
-            <span className="course_disc_price">${this.props.cInfo.disc_price}</span>
-            <span className="course_full_price">${this.props.cInfo.full_price}</span>
+          <div className={styles.coursePriceBar}>
+            <span className={styles.courseDiscPrice}>${this.props.cInfo.disc_price}</span>
+            <span className={styles.courseFullPrice}>${this.props.cInfo.full_price}</span>
           </div>
         </div>
       </div>
@@ -67,3 +70,26 @@ class Course extends React.Component {
   }
 }
 export default Course;
+
+Course.propTypes = {
+  instInfo: PropTypes.shape({
+    photo_url: PropTypes.string,
+    rating: PropTypes.string,
+    reviews: PropTypes.number,
+    students: PropTypes.number,
+    courses: PropTypes.number,
+    inst_name: PropTypes.string,
+    title: PropTypes.string,
+    blurb: PropTypes.string,
+  }),
+  cInfo: PropTypes.shape({
+    photo_url: PropTypes.string,
+    lectures: PropTypes.number,
+    num_hours: PropTypes.number,
+    course_name: PropTypes.string,
+    rating: PropTypes.string,
+    reviews: PropTypes.number,
+    disc_price: PropTypes.string,
+    full_price: PropTypes.string,
+  }),
+};

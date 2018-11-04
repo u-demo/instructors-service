@@ -40,7 +40,7 @@ describe('Course Component Snapshot', () => {
   });
   
   it('should render an instructor_course class', () => {
-    expect(wrapper.exists('.instructor_course')).toEqual(true);
+    expect(wrapper.exists('.instructorCourse')).toEqual(true);
   });
 
   it('should render two hearts', () => {

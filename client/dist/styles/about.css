@@ -1,0 +1,89 @@
+.instructor {
+  padding: 20px 0 0;
+}
+
+.infoPhoto {
+  font-size: 15px;
+}
+
+.instructorPhoto {
+  height: 94px;
+  width: 94px;
+  border: 1px solid #dedfe0;
+  border-radius: 50%;
+}
+
+.infoPhoto {
+  display: inline-block;
+  width: 170px;
+  margin-right: 60px;
+  vertical-align: top;
+}
+
+.titleBlurb {
+  display: inline-block;
+  width: 386.66px;
+  vertical-align: top;
+}
+
+.instructorName {
+  display: inline-block;
+  color: #007791;
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.instructorName:hover {
+  color: #002c38;
+}
+
+.instructorTitle {
+  font-size: 16px;
+  line-height: 1.33;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.instructorBlurb {
+  font-size: 15px;
+  position: relative;
+}
+
+.short {
+  min-height: 200px;
+  max-height: 334px;
+  overflow: hidden;
+}
+
+.moreContainer {
+  height: 60px;
+  width: 386.67px;
+  position: absolute;
+  bottom: 0px;
+  display: inline-block;
+  background: linear-gradient(hsla(0,0%,100%,0),hsla(0,0%,100%,.95),#fff);
+}
+
+.moreBlurb {
+  color: #007791;
+  cursor: pointer;
+  font-size: 15px;
+  position: absolute;
+  bottom: 0px; 
+  padding: 12px;
+}
+
+.moreBlurb:hover {
+  color: #002c38;
+}
+
+p {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.invisible {
+  visibility: hidden;
+}

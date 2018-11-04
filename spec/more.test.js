@@ -32,15 +32,15 @@ describe('More Component Snapshot', () => {
     expect(wrapper.find('div')).toBeDefined();     
   });
   
-  it('should render an instructor_courses_container class', () => {
-    expect(wrapper.exists('.instructor_courses_container')).toEqual(true);
+  it('should render an instructorCoursesContainer class', () => {
+    expect(wrapper.exists('.instructorCoursesContainer')).toEqual(true);
   });
 
-  it('should not render an instructor_courses_header div if there are no courses', () => {
-    expect(wrapper.exists('.instructor_courses_header')).toEqual(false);
+  it('should not render an instructorCoursesHeader div if there are no courses', () => {
+    expect(wrapper.exists('.instructorCoursesHeader')).toEqual(false);
   });
 
-  it('should render an instructor_courses_header div if there are courses', () => {
+  it('should render an instructorCoursesHeader div if there are courses', () => {
     let props = {
       info: {
         courseInfo: [1],
@@ -50,7 +50,7 @@ describe('More Component Snapshot', () => {
       }
     }
     let wrapper = shallow(< More {...props} />);
-    expect(wrapper.exists('.instructor_courses_header')).toEqual(true);
+    expect(wrapper.exists('.instructorCoursesHeader')).toEqual(true);
   });
 
 });
