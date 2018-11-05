@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About Component Snapshot renders About component 1`] = `
+<div
+  className="instructor"
+>
+  <div
+    className="infoPhoto"
+  >
+    <img
+      className="instructorPhoto"
+      src="google.com"
+    />
+    <table
+      className="instructorInfo"
+    >
+      <tbody>
+        <tr>
+          <td>
+            <img
+              className="instructorIcon"
+              src="https://s3-us-west-1.amazonaws.com/u-demo/blackstar.png"
+            />
+          </td>
+          <td>
+            <span
+              className="instructorStat"
+            >
+              5
+            </span>
+            <span
+              className="instructorStatText"
+            >
+              Instructor Rating
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              className="instructorIcon"
+              src="https://s3-us-west-1.amazonaws.com/u-demo/chat.png"
+            />
+          </td>
+          <td>
+            <span
+              className="instructorStat"
+            >
+              10
+            </span>
+            <span
+              className="instructorStatText"
+            >
+              Reviews
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              className="instructorIcon"
+              src="https://s3-us-west-1.amazonaws.com/u-demo/user.png"
+            />
+          </td>
+          <td>
+            <span
+              className="instructorStat"
+            >
+              100
+            </span>
+            <span
+              className="instructorStatText"
+            >
+              Students
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img
+              className="instructorIcon"
+              src="https://s3-us-west-1.amazonaws.com/u-demo/play.png"
+            />
+          </td>
+          <td>
+            <span
+              className="instructorStat"
+            >
+              10
+            </span>
+            <span
+              className="instructorStatText"
+            >
+              Courses
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    className="titleBlurb"
+  >
+    <div>
+      <div
+        className="instructorName"
+      >
+        Charlie
+      </div>
+    </div>
+    <div
+      className="instructorTitle"
+    >
+      Teacher
+    </div>
+    <div
+      className="instructorBlurb short"
+    >
+      <p>
+        this is my blurb
+      </p>
+      <div
+        className="moreContainer visible"
+      >
+        <div
+          className="moreBlurb"
+          onClick={[Function]}
+        >
+          + See more
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

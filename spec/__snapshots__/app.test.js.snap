@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`More Component Snapshot renders App component 1`] = `
+<div
+  className="leftCol"
+>
+  <div
+    className="aboutInstructors"
+  />
+  <div
+    className="instructorCourses"
+  />
+</div>
+`;

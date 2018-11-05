@@ -16,7 +16,23 @@
 
 ## Usage
 
-> Some usage instructions
+Before seeding the database:
+
+mysql -u root -p [Enter password]
+create database inst;
+
+To seed database:
+npm seed
+
+To start server:
+npm server-dev
+
+To build:
+npm react-dev
+
+To test:
+npm test
+
 
 ## Requirements
 

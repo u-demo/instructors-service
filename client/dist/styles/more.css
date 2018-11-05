@@ -1,0 +1,15 @@
+.instructorCoursesContainer {
+  width: 750px;
+  height: 368px;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #dedfe0;
+  margin-bottom: 15px;
+}
+
+.instructorCoursesHeader {
+  font-size: 22px;
+  font-weight: 600;
+  padding-bottom: 10px;
+}

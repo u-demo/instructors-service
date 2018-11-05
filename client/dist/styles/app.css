@@ -1,0 +1,19 @@
+.leftCol {
+  width: 66.67%;
+  font-family: Open Sans;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.43;
+  color: #29303b;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+
+.aboutInstructors {
+  margin-bottom: 20px;
+}
+
+.aboutHeader {
+  font-size: 22px;
+  font-weight: 600;
+}
+
