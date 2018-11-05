@@ -55,7 +55,7 @@ class Course extends React.Component {
         <div className={styles.courseTextSection}>
           <span className={styles.courseName}>{this.props.cInfo.course_name}</span>
           <div className={styles.courseInstructor}>{this.props.instInfo.inst_name}</div>
-          
+
           <div className={styles.courseStatsBar}>
             <img className={styles.emptyStars}
               src="https://s3.us-east-2.amazonaws.com/udemy-demo-tarik/emptyStars.png"></img>
