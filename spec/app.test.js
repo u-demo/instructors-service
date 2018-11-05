@@ -14,16 +14,16 @@ describe('More Component Snapshot', () => {
     wrapper = shallow(< App />);
   });
 
-  it('renders App component', () => {  
-    const AppTest = (props) => <App />;
+  it('renders App component', () => {
+    const AppTest = props => <App />;
     const AppTestComponent = renderer.create(<AppTest />).toJSON();
     expect(AppTestComponent).toMatchSnapshot();
   });
 
-  it('should render a div', () => {  
-    expect(wrapper.find('div')).toBeDefined();     
+  it('should render a div', () => {
+    expect(wrapper.find('div')).toBeDefined();
   });
-  
+
   it('should render a left-col class', () => {
     expect(wrapper.exists('.leftCol')).toEqual(true);
   });
@@ -44,5 +44,4 @@ describe('More Component Snapshot', () => {
   //   let wrapper = shallow(< More {...props} />);
   //   expect(wrapper.exists('.instructor_courses_header')).toEqual(true);
   // });
-
 });

@@ -23,6 +23,7 @@ class About extends React.Component {
       box: 'visible',
     };
     this.handleClick = this.handleClick.bind(this);
+    this.renderStats = this.renderStats.bind(this);
   }
 
   handleClick() {
@@ -39,6 +40,20 @@ class About extends React.Component {
     }
   }
 
+  renderStats() {
+    const rows = ['Instructor Rating', 'Reviews', 'Students', 'Courses'];
+    return rows.map((title, i) => {
+      const images = ['blackstar', 'chat', 'user', 'play'];
+      const stats = [addCommas(this.props.info.rating),
+        addCommas(this.props.info.reviews),
+        addCommas(this.props.info.students),
+        addCommas(this.props.info.courses)];
+
+      return < Stat key={i} stat={stats[i]} text={title}
+        image={`https://s3-us-west-1.amazonaws.com/u-demo/${images[i]}.png`} />;
+    });
+  }
+
   render() {
     return (
       <div className={styles.instructor}>
@@ -46,23 +61,13 @@ class About extends React.Component {
           <img className={styles.instructorPhoto} src={this.props.info.photo_url}></img>
           <table className={styles.instructorInfo}>
             <tbody>
-              {['Instructor Rating', 'Reviews', 'Students', 'Courses'].map((title, i) => {
-                const images = ['blackstar', 'chat', 'user', 'play'];
-                const stats = [addCommas(this.props.info.rating),
-                  addCommas(this.props.info.reviews),
-                  addCommas(this.props.info.students),
-                  addCommas(this.props.info.courses)];
-
-                return < Stat key={i} stat={stats[i]} text={title}
-                  image={`https://s3-us-west-1.amazonaws.com/u-demo/${images[i]}.png`} />;
-              })}
+              {this.renderStats()}
             </tbody>
           </table>
         </div>
+
         <div className={styles.titleBlurb}>
-          <div>
-            <div className={styles.instructorName}>{this.props.info.inst_name}</div>
-          </div>
+          <div className={styles.instructorName}>{this.props.info.inst_name}</div>
           <div className={styles.instructorTitle}>{this.props.info.title}</div>
           <div className={`${styles.instructorBlurb} ${styles[this.state.expand]}`}>
               {this.props.info.blurb.split('\n').map((p, i) => <p key={i}>{p}</p>)}

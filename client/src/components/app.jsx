@@ -11,6 +11,8 @@ class App extends React.Component {
       courseId: Math.random() * 100,
     };
     this.update = this.update.bind(this);
+    this.renderInstructors = this.renderInstructors.bind(this);
+    this.renderCourses = this.renderCourses.bind(this);
   }
 
   componentDidMount() {
@@ -27,28 +29,43 @@ class App extends React.Component {
       });
   }
 
+  renderInstructors() {
+    let instructors;
+    if (this.state.instructors) {
+      instructors = [
+        <div key={'header'} className={styles.aboutHeader}>
+          {this.state.instructors.length > 1 ? 'About the instructors' : 'About the instructor'}
+        </div>,
+        this.state.instructors
+          .map((inst, i) => <div key={i} className={styles.aboutInstructor}>
+        < About key={i} info={this.state.instructors[i].instInfo} /></div>),
+      ];
+    } else {
+      instructors = null;
+    }
+    return instructors;
+  }
+
+  renderCourses() {
+    let courses;
+    if (this.state.instructors) {
+      courses = this.state.instructors.slice(0, 3)
+        .map((inst, i) => < More key={i} info={this.state.instructors[i]}
+          id={this.state.courseId} />);
+    } else {
+      courses = null;
+    }
+    return courses;
+  }
+
   render() {
     return (
       <div className={styles.leftCol}>
         <div className={styles.aboutInstructors}>
-          {this.state.instructors
-            ? [
-              (this.state.instructors.length > 1
-                ? <div key={'header'} className={styles.aboutHeader}>About the instructors</div>
-                : <div key={'header'} className={styles.aboutHeader}>About the instructor</div>
-              ),
-              this.state.instructors
-                .map((inst, i) => <div key={i} className={styles.aboutInstructor}>
-                < About key={i} info={this.state.instructors[i].instInfo} /></div>),
-            ]
-            : null}
+          {this.renderInstructors()}
         </div>
         <div className={styles.instructorCourses}>
-          {this.state.instructors
-            ? this.state.instructors.slice(0, 3)
-              .map((inst, i) => < More key={i} info={this.state.instructors[i]}
-              id={this.state.courseId} />)
-            : null}
+          {this.renderCourses()}
         </div>
       </div>
     );
