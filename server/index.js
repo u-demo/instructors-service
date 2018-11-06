@@ -6,7 +6,7 @@ const mysql = require('../database/sqlizeIndex.js');
 const app = express();
 
 app.use(express.static(path.join(__dirname, '/../client/dist')));
-app.get('/instructors/:id', (req, res) => {
+app.get('/courses/:id/instructors', (req, res) => {
   mysql.sequelize.authenticate()
     .then(function getInstructorIds() {
       return mysql.Join.findAll({ where: { course_id: req.params.id } });
