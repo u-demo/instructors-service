@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('inst', 'root', 'MyNewPass', {
+const sequelize = new Sequelize('inst', 'root', '', {
   dialect: 'mysql',
 
   pool: {
