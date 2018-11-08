@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('inst', 'root', '', {
+const sequelize = new Sequelize('inst', 'udemo', 'DBPassword', {
   dialect: 'mysql',
+  host: 'db.t2.micro',
+  port: 3306,
 
   pool: {
     max: 30,
