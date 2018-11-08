@@ -2,15 +2,15 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('inst', 'udemo', 'DBPassword', {
   dialect: 'mysql',
-  host: 'db.t2.micro',
+  host: 'aa1nsis7r4ymq1v.cc5obfk5ms0b.us-east-2.rds.amazonaws.com',
   port: 3306,
-
-  pool: {
-    max: 30,
-    min: 0,
-    acquire: 30000,
-    idle: 1000,
+  logging: console.log,
+  maxConcurrentQueries: 100,
+  dialectOptions: {
+    ssl: 'Amazon RDS',
   },
+  pool: { maxConnections: 5, maxIdleTime: 30 },
+  language: 'en',
 });
 
 const Instructors = sequelize.define('instructors', {
