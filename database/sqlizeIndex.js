@@ -13,6 +13,17 @@ const sequelize = new Sequelize('inst', 'udemo', 'DBPassword', {
   language: 'en',
 });
 
+// const sequelize = new Sequelize('inst', 'root', '', {
+//   dialect: 'mysql',
+
+//   pool: {
+//     max: 30,
+//     min: 0,
+//     acquire: 30000,
+//     idle: 1000,
+//   },
+// });
+
 const Instructors = sequelize.define('instructors', {
   id: {
     type: Sequelize.INTEGER(6),
