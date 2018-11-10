@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const db = require('../db.config.js');
 
-const sequelize = new Sequelize('inst', 'udemo', 'DBPassword', {
+const sequelize = new Sequelize('inst', db.db, db.password, {
   dialect: 'mysql',
-  host: 'db.t2.micro',
+  host: db.host,
   port: 3306,
 
   pool: {
