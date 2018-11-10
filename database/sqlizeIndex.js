@@ -5,13 +5,13 @@ const sequelize = new Sequelize('inst', db.db, db.password, {
   dialect: 'mysql',
   host: db.host,
   port: 3306,
-
-  pool: {
-    max: 30,
-    min: 0,
-    acquire: 30000,
-    idle: 1000,
+  logging: console.log,
+  maxConcurrentQueries: 100,
+  dialectOptions: {
+    ssl: 'Amazon RDS',
   },
+  pool: { maxConnections: 5, maxIdleTime: 30 },
+  language: 'en',
 });
 
 const Instructors = sequelize.define('instructors', {
