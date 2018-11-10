@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
+const db = require('../db.config.js');
 
-const sequelize = new Sequelize('inst', 'udemo', 'DBPassword', {
+const sequelize = new Sequelize('inst', db.db, db.password, {
   dialect: 'mysql',
-  host: 'aa1nsis7r4ymq1v.cc5obfk5ms0b.us-east-2.rds.amazonaws.com',
+  host: db.host,
   port: 3306,
   logging: console.log,
   maxConcurrentQueries: 100,
@@ -12,17 +13,6 @@ const sequelize = new Sequelize('inst', 'udemo', 'DBPassword', {
   pool: { maxConnections: 5, maxIdleTime: 30 },
   language: 'en',
 });
-
-// const sequelize = new Sequelize('inst', 'root', '', {
-//   dialect: 'mysql',
-
-//   pool: {
-//     max: 30,
-//     min: 0,
-//     acquire: 30000,
-//     idle: 1000,
-//   },
-// });
 
 const Instructors = sequelize.define('instructors', {
   id: {
