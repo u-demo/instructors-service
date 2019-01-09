@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> Instructor info for e-learning app. MySQL, Express, React, Node.
 
 ## Related Projects
 
